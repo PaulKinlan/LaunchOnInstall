@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <script>
+    
+      /*
+       We only want to monitor updates to apps so the only known way to do this 
+       at the moment is to listen as apps are uninstalled and then re-installed
+       */
+       
+      var apps = {};
+      var selected;
+      
+      var onInstall = function(ext) {
+        if(ext.isApp) {
+          
+          if(!!apps[ext.name] == false) {
+            // It is not an update, it is a fresh install
+            chrome.management.launchApp(ext.id);
+          }
+          
+          apps[ext.name] = ext; 
+        }
+      };
+      
+      /*
+        Track all the version numbers
+      */
+      var getAllCallback = function(exts) {
+        for(var i in exts) {
+          var ext = exts[i];
+          
+          if(ext.isApp) {
+            apps[ext.id] = ext;
+          }
+        }
+      };
+      
+      chrome.management.onInstalled.addListener(onInstall);
+      // Populate the list of apps that we know about so we don't launch existing apps.
+      chrome.management.getAll(getAllCallback);
+      
+    </script>
+  </head>
+  <body>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+{
+    "name": "Launch On Install",
+    "description": "Launches apps as soon as you isntall them!",
+    "version": "0.0.0.1",
+    "background_page": "background.html",
+    "permissions" : ["management"],
+    "icons" : {
+      "16" : "go.png"
+    }
+}
