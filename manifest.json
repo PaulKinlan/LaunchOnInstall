@@ -1,7 +1,7 @@
 {
     "name": "Launch On Install",
-    "description": "Launches apps as soon as you isntall them!",
-    "version": "0.0.0.1",
+    "description": "Launches apps as soon as you install them!",
+    "version": "0.0.0.2",
     "background_page": "background.html",
     "permissions" : ["management"],
     "icons" : {
